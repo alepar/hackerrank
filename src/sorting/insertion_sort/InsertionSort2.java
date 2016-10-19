@@ -4,7 +4,7 @@ import java.util.*;
 
 public class InsertionSort2 {
 
-    public static final int CACHE_LINE = 16;
+    public static final int CACHE_LINE = 32;
 
     public static void main(String[] args) {
         try(Scanner stdin = new Scanner(System.in)) {
@@ -124,7 +124,7 @@ public class InsertionSort2 {
 
     private static class Node {
 
-        private final List<Node> children = new ArrayList<>(CACHE_LINE);
+        private final List<Node> children = new ArrayList<>();
 
         private int min;
         private int max;
