@@ -1,4 +1,4 @@
-package challenges.candies;
+package algorithms.dynamic_programming.candies;
 
 import java.util.Scanner;
 

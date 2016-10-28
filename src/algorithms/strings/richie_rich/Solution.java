@@ -1,4 +1,4 @@
-package challenges.richie_rich;
+package algorithms.strings.richie_rich;
 
 import java.util.Scanner;
 

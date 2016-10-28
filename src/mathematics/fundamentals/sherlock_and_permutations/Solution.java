@@ -1,4 +1,4 @@
-package challenges.sherlock_and_permutations;
+package mathematics.fundamentals.sherlock_and_permutations;
 
 import java.util.Arrays;
 import java.util.Scanner;

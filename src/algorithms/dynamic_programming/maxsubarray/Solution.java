@@ -1,4 +1,4 @@
-package challenges.maxsubarray;
+package algorithms.dynamic_programming.maxsubarray;
 
 import java.util.Scanner;
 

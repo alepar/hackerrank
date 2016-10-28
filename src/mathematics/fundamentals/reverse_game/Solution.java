@@ -1,4 +1,4 @@
-package challenges.reverse_game;
+package mathematics.fundamentals.reverse_game;
 
 import java.util.Scanner;
 

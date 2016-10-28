@@ -1,4 +1,4 @@
-package search.sherlock_and_array;
+package algorithms.search.sherlock_and_array;
 
 import java.util.*;
 

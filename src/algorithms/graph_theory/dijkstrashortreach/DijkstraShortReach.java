@@ -1,4 +1,4 @@
-package graphtheory.dijkstrashortreach;
+package algorithms.graph_theory.dijkstrashortreach;
 
 import java.util.*;
 

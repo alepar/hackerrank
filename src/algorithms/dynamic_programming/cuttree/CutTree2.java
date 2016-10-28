@@ -1,4 +1,4 @@
-package dynamicprogramming.cuttree;
+package algorithms.dynamic_programming.cuttree;
 
 import java.util.*;
 

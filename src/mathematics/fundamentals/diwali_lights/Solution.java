@@ -1,4 +1,4 @@
-package challenges.diwalilights;
+package mathematics.fundamentals.diwali_lights;
 
 import java.math.BigInteger;
 import java.util.Scanner;

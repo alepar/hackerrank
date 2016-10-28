@@ -1,4 +1,4 @@
-package challenges.even_tree;
+package algorithms.graph_theory.even_tree;
 
 import java.util.ArrayList;
 import java.util.List;
