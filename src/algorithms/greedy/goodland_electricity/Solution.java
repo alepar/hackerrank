@@ -20,7 +20,7 @@ public class Solution {
             while(lastCovered < N-1) {
                 int i;
                 final int right = Math.min(lastCovered + K, N - 1);
-                final int left = Math.max(0, lastCovered - K + 1);
+                final int left = Math.max(-1, lastCovered - K + 1);
 
                 boolean found = false;
                 for (i = right; i > left; i--) {
