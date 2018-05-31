@@ -7,8 +7,14 @@ import java.util.regex.*;
 public class DijkstraShortReach {
 
     public static void main(String[] args) throws Exception {
-        final BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        final BufferedWriter stdout = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        try (FileOutputStream fos = new FileOutputStream(System.getenv("OUTPUT_PATH"))) {
+            run(System.in, fos);
+        }
+    }
+
+    public static void run(InputStream is, OutputStream os) throws Exception {
+        final BufferedReader stdin = new BufferedReader(new InputStreamReader(is));
+        final BufferedWriter stdout = new BufferedWriter(new OutputStreamWriter(os));
 
         final Pattern splitby = Pattern.compile(" ");
         String[] line;
@@ -38,7 +44,7 @@ public class DijkstraShortReach {
 
             final Node start = graph[Integer.valueOf(stdin.readLine())-1];
 
-            final PriorityQueue<Candidate> queue = new PriorityQueue<>((o1, o2) -> Integer.compare(o1.distance, o2.distance));
+            final PriorityQueue<Candidate> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.distance));
             queue.add(new Candidate(start, 0));
 
             Candidate can;
@@ -46,7 +52,7 @@ public class DijkstraShortReach {
                 if (can.node.distance == -1) {
                     can.node.distance = can.distance;
 
-                    for (Edge edge : can.node.edges) {
+                    for (Edge edge : can.node.edges.values()) {
                         final Node dest = edge.dest;
                         final int newDist = can.node.distance + edge.distance;
                         if (dest.distance == -1) {
@@ -56,7 +62,6 @@ public class DijkstraShortReach {
                 }
             }
 
-            final StringBuilder sb = new StringBuilder();
             for (int i=0; i<graph.length; i++) {
                 final Node node = graph[i];
                 final int distance = node.distance;
@@ -70,8 +75,7 @@ public class DijkstraShortReach {
             stdout.newLine();
         }
 
-        stdin.close();
-        stdout.close();
+        stdout.flush();
     }
 
     private static void readEdgeString(String s, int[] out) {
@@ -90,17 +94,23 @@ public class DijkstraShortReach {
     }
 
     private static class Node {
-        private final List<Edge> edges = new ArrayList<>();
+        private final Map<Node, Edge> edges = new IdentityHashMap<>();
         private int distance = -1;
 
         public void addEdge(Node dest, int weight) {
-            edges.add(new Edge(dest, weight));
+            final Edge edge = edges.get(dest);
+            if (edge != null) {
+                if (edge.distance > weight) edge.distance = weight;
+            }
+            else {
+                edges.put(dest, new Edge(dest, weight));
+            }
         }
     }
 
     private static class Edge {
         private final Node dest;
-        private final int distance;
+        private int distance;
 
         private Edge(Node dest, int distance) {
             this.dest = dest;
