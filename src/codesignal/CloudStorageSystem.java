@@ -1,8 +1,5 @@
 package codesignal;
 
-import com.sun.jdi.event.ClassUnloadEvent;
-
-import java.sql.Array;
 import java.util.*;
 
 // https://www.interviewdb.io/question/codesignal?page=1&name=cloud-storage-system---all-levels
