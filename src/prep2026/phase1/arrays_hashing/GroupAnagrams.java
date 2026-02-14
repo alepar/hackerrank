@@ -1,4 +1,4 @@
-package prep2026.phase1;
+package prep2026.phase1.arrays_hashing;
 
 import java.util.*;
 import java.util.stream.Collectors;
